@@ -11,7 +11,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    ls --all --human-readable --literal
+                    ls -ahl
 
                     node --version
                     npm --version
@@ -19,7 +19,7 @@ pipeline {
                     npm clean-install
                     npm run build
 
-                    ls --all --human-readable --literal
+                    ls -ahl
                 '''
             }
         }
