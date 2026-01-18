@@ -17,8 +17,6 @@ pipeline {
 					node --version
                     npm --version
 
-                    npm install --global bun
-
                     npm clean-install
                     npm run build
 
