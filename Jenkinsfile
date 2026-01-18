@@ -19,7 +19,7 @@ pipeline {
 
                     npm install --global bun
 
-                    bun install --frozen-lockfile
+                    bun install --production --no-save --frozen-lockfile
                     bun run build
 
                 	ls -ahl
