@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	stages {
-		stage('with docker') {
+		stage('build') {
 			agent {
 				docker {
 					image 'node:24.13.0-alpine3.23'
@@ -12,19 +12,17 @@ pipeline {
 
 			steps {
 				sh '''
-                    echo "With Docker"
-                    node --version
-                    ls -ahl
-                    touch container-yes.txt
-                '''
-			}
-		}
-		stage('w/o docker') {
-			steps {
-				sh '''
-                    echo "Without Docker"
-                    ls -ahl
-                    touch container-no.txt
+					ls -ahl
+
+					node --version
+                    npm --version
+
+                    npm install --global bun
+
+                    bun install --frozen-lockfile
+                    bun run build
+
+                	ls -ahl
                 '''
 			}
 		}
