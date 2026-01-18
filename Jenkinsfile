@@ -19,8 +19,8 @@ pipeline {
 
                     npm install --global bun
 
-                    bun install --production --no-save --frozen-lockfile
-                    bun run build
+                    npm clean-install
+                    npm run build
 
                 	ls -ahl
                 '''
@@ -38,7 +38,7 @@ pipeline {
 			steps {
 				sh '''
 					test -f build/index.html
-					bun run test
+					npm run test
 				'''
 			}
 		}
